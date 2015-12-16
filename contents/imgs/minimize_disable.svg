@@ -14,28 +14,27 @@
    id="svg3795"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="close.svg">
+   sodipodi:docname="minimize_disable.svg">
   <defs
      id="defs3797" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#808080"
+     pagecolor="#ffffff"
      bordercolor="#ffffff"
      borderopacity="0.0"
      inkscape:pageopacity="0.50196078"
      inkscape:pageshadow="0"
      inkscape:zoom="28.963094"
-     inkscape:cx="-2.1439257"
-     inkscape:cy="4.9011498"
+     inkscape:cx="-5.9295502"
+     inkscape:cy="-1.6989886"
      inkscape:document-units="px"
      inkscape:current-layer="svg3795"
      showgrid="true"
      inkscape:window-width="1366"
-     inkscape:window-height="714"
+     inkscape:window-height="712"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     borderlayer="false">
+     inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
        id="grid3556"
@@ -56,14 +55,11 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <path
-     inkscape:connector-curvature="0"
-     id="path2985"
-     d="M 1.1,1.1 8.9,8.9"
-     style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     inkscape:connector-curvature="0"
-     id="path2985-1"
-     d="M 8.9,1.1 1.1,8.9"
-     style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     y="7"
+     x="1"
+     height="2"
+     width="8"
+     id="rect4135"
+     style="fill:#404040;fill-opacity:1;stroke:none;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
 </svg>

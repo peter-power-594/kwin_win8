@@ -4,7 +4,7 @@ Comment=Windows 8 decoration clone
 
 X-Plasma-MainScript=main.qml
 X-KDE-PluginInfo-Author=Demitrius Belai
-X-KDE-PluginInfo-Email=demitriusbelai@terra.com.br
+X-KDE-PluginInfo-Email=demitriusbelai@gmail.com
 X-KDE-PluginInfo-Name=kwin_win8
 X-KDE-PluginInfo-Version=1.0
 

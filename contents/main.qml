@@ -1,5 +1,5 @@
 /********************************************************************
-Copyright (C) 2014 Demitrius Belai <demitriusbelai@terra.com.br>
+Copyright (C) 2015 Demitrius Belai <demitriusbelai@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-import QtQuick 1.1
+import QtQuick 2.0
 import org.kde.kwin.decoration 0.1
 
 Decoration {
@@ -27,26 +27,25 @@ Decoration {
     }
     id: root
     alpha: false
-    property real buttonSize: (borders.top - 1) / 3.0 * 2.0
-    property real topHeight: decoration.maximized ? maximizedBorders.top : borders.top
+    property real buttonSize: (borders.top  - 2) / 3.0 * 2.0
+    property real topHeight: decoration.client.maximized ? maximizedBorders.top : borders.top
     property alias titleAlignment: caption.horizontalAlignment
     Rectangle {
         color: "black"
         opacity: 0.0352941176471
-        visible: !decoration.maximized
+        visible: !decoration.client.maximized
         anchors {
             fill: parent
         }
         border {
-            width: decoration.maximized ? 0 : 1
-            //color: colorHelper.shade(options.titleBarColor, ColorHelper.DarkShade)
+            width: decoration.client.maximized ? 0 : 1
             color: "black"
         }
     }
     Rectangle {
         color: "black"
         opacity: 0.0862745098039
-        visible: !decoration.maximized
+        visible: !decoration.client.maximized
         anchors {
             fill: parent
             bottomMargin: 1
@@ -55,26 +54,23 @@ Decoration {
             rightMargin: 1
         }
         border {
-            width: decoration.maximized ? 0 : 1
-            //color: colorHelper.shade(options.titleBarColor, ColorHelper.DarkShade)
+            width: decoration.client.maximized ? 0 : 1
             color: "black"
         }
     }
     Rectangle {
         color: options.titleBarColor
-        //color: "#4d8ce3"
         anchors {
             fill: parent
-            bottomMargin: decoration.maximized ? 0 : 2
-            topMargin: decoration.maximized ? 0 : 2
-            leftMargin: decoration.maximized ? 0 : 2
-            rightMargin: decoration.maximized ? 0 : 2
+            bottomMargin: decoration.client.maximized ? 0 : 2
+            topMargin: decoration.client.maximized ? 0 : 2
+            leftMargin: decoration.client.maximized ? 0 : 2
+            rightMargin: decoration.client.maximized ? 0 : 2
         }
-        // outer Border
         border {
-            width: decoration.maximized ? 0 : 1
+            id: outerBorder
+            width: decoration.client.maximized ? 0 : 1
             color: colorHelper.shade(options.titleBarColor, ColorHelper.MidShade)
-            //color: "#3b6bae"
         }
         Item {
             id: top
@@ -82,24 +78,11 @@ Decoration {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: decoration.maximized ? 0 : 1
-                leftMargin: decoration.maximized ? 0 : root.borders.right
-                rightMargin: decoration.maximized ? 0 : root.borders.left
+                topMargin: 0
+                leftMargin: decoration.client.maximized ? 0 : root.borders.right - 2
+                rightMargin: decoration.client.maximized ? 0 : root.borders.left - 2
             }
-            height: decoration.maximized ? root.maximizedBorders.top : root.borders.top
-            MouseArea {
-                acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
-                anchors.fill: parent
-                onDoubleClicked: decoration.titlebarDblClickOperation()
-                onPressed: {
-                    if (mouse.button == Qt.LeftButton) {
-                        mouse.accepted = false;
-                    } else {
-                        decoration.titlePressed(mouse.button, mouse.buttons);
-                    }
-                }
-                onReleased: decoration.titleReleased(mouse.button, mouse.buttons)
-            }
+            height: decoration.client.maximized ? root.maximizedBorders.top : root.borders.top
 
             Item {
                 id: titleRow
@@ -139,14 +122,11 @@ Decoration {
                         rightMargin: 5
                         leftMargin: 5
                         topMargin: (root.topHeight - caption.implicitHeight) / 2
-                        //bottomMargin: 3
                     }
                     color: options.fontColor
-                    text: decoration.caption
+                    text: decoration.client.caption
                     font: options.titleFont
-                    //style: root.titleShadow ? Text.Raised : Text.Normal
-                    //styleColor: colorHelper.shade(color, ColorHelper.ShadowShade)
-                    //elide: Text.ElideMiddle
+                    renderType: Text.NativeRendering
                 }
                 ButtonGroup {
                     id: rightButtonGroup
@@ -168,6 +148,9 @@ Decoration {
                         right: parent.right
                     }
                 }
+                Component.onCompleted: {
+                    decoration.installTitleItem(titleRow);
+                }
             }
         }
         Item {
@@ -181,9 +164,8 @@ Decoration {
                 }
                 height: 1
                 y: top.height - 1
-                visible: decoration.maximized
+                visible: decoration.client.maximized
                 color: colorHelper.shade(options.titleBarColor, ColorHelper.MidShade)
-                //color: "#356cb7"
             }
 
             Rectangle {
@@ -197,10 +179,8 @@ Decoration {
                 border {
                     width: 1
                     color: colorHelper.shade(options.titleBarColor, ColorHelper.MidShade)
-                    //color: "#356cb7"
                 }
-                visible: !decoration.maximized
-                //color: "white"
+                visible: !decoration.client.maximized
                 color: options.titleBarColor
             }
         }
@@ -212,7 +192,8 @@ Decoration {
             height: root.buttonSize
             image: "imgs/minimize.svg"
             imageHover: "imgs/minimize_hover.svg"
-            buttonType: "I"
+            imageDisable: "imgs/minimize_disable.svg"
+            buttonType: DecorationOptions.DecorationButtonMinimize
         }
     }
     Component {
@@ -220,9 +201,10 @@ Decoration {
         Button {
             width: root.buttonSize / 4.0 * 5.0
             height: root.buttonSize
-            image: !decoration.maximized ? "imgs/maximize.svg" : "imgs/restore.svg"
-            imageHover: !decoration.maximized ? "imgs/maximize_hover.svg" : "imgs/restore_hover.svg"
-            buttonType: "A"
+            image: !decoration.client.maximized ? "imgs/maximize.svg" : "imgs/restore.svg"
+            imageHover: !decoration.client.maximized ? "imgs/maximize_hover.svg" : "imgs/restore_hover.svg"
+            imageDisable: !decoration.client.maximized ? "imgs/maximize_disable.svg" : "imgs/restore_disable.svg"
+            buttonType: DecorationOptions.DecorationButtonMaximizeRestore
         }
     }
     Component {
@@ -236,8 +218,7 @@ Decoration {
                 ColorAnimation { from: "#e04343"; duration: 500 }
             }            
             Image {
-                x: parent.width / 2 - width / 2
-                y: parent.height / 2 - height / 2
+                anchors.centerIn: parent
                 source: "imgs/close.svg"
                 width: parent.height / 2
                 height: parent.height / 2
@@ -250,7 +231,7 @@ Decoration {
                 function colorize() {
                     closeButtonRect.color = button.hovered ? "#e04343" : "#c75050";
                 }
-                buttonType: "X"
+                buttonType: DecorationOptions.DecorationButtonClose
                 anchors.fill: parent
                 onHoveredChanged: colorize()
             }
@@ -262,20 +243,21 @@ Decoration {
             height: root.topHeight
             width: root.buttonSize
             MenuButton {
-                width: root.buttonSize
-                height: root.buttonSize
+                width: root.buttonSize / 5.0 * 4.0
+                height: root.buttonSize / 5.0 * 4.0
                 anchors {
-                    /*topMargin: titleRow.normalHeight - root.buttonSize*/
                     bottom: parent.bottom
-                    bottomMargin: (root.topHeight - root.buttonSize) / 2
+                    bottomMargin: (parent.height - (root.buttonSize / 5.0 * 4.0)) / 2
+                    left: parent.left
                 }
             }
         }
     }
     Component.onCompleted: {
         borders.setBorders(8);
-        borders.setTitle(31);
-        maximizedBorders.setTitle(23);
+        borders.setTitle(32);
+        maximizedBorders.setTitle(26);
         root.titleAlignment = Text.AlignHCenter;
+        console.log(root.buttonSize);
     }
 }

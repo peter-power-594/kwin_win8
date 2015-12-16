@@ -1,5 +1,5 @@
 /********************************************************************
-Copyright (C) 2014 Demitrius Belai <demitriusbelai@terra.com.br>
+Copyright (C) 2015 Demitrius Belai <demitriusbelai@gmail.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,15 +14,14 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-import QtQuick 1.1
+import QtQuick 2.0
 import org.kde.kwin.decoration 0.1
 
 Item {
-//    width: root.buttonSize / 4.0 * 5.0
-//    height: root.buttonSize
     id: button
     property string image: ""
     property string imageHover: ""
+    property string imageDisable: ""
     property string buttonType: ""
     Rectangle {
         id: rectButton
@@ -46,9 +45,8 @@ Item {
     }
     Image {
         id: iconButton
-        x: parent.width / 2 - width / 2
-        y: parent.height / 2 - height / 2
-        source: button.image
+        anchors.centerIn: parent
+        source: decbutton.enabled ? button.image : button.imageDisable
         width: parent.height / 2
         height: parent.height / 2
         sourceSize.width: width
@@ -60,6 +58,8 @@ Item {
         function colorize() {
             rectButton.state = decbutton.hovered ? 'hover' : 'normal';
             iconButton.source = decbutton.hovered ? button.imageHover : button.image;
+            console.info(iconButton.sourceSize.width, iconButton.sourceSize.height, iconButton.width, iconButton.height);
+            console.info(button.width, button.height);
         }
         buttonType: button.buttonType;
         anchors.fill: parent

@@ -14,35 +14,34 @@
    id="svg3795"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="close.svg">
+   sodipodi:docname="restore_disable.svg">
   <defs
      id="defs3797" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#808080"
+     pagecolor="#ffffff"
      bordercolor="#ffffff"
      borderopacity="0.0"
      inkscape:pageopacity="0.50196078"
      inkscape:pageshadow="0"
-     inkscape:zoom="28.963094"
-     inkscape:cx="-2.1439257"
-     inkscape:cy="4.9011498"
+     inkscape:zoom="45.254834"
+     inkscape:cx="-2.4939932"
+     inkscape:cy="5.8037702"
      inkscape:document-units="px"
      inkscape:current-layer="svg3795"
      showgrid="true"
      inkscape:window-width="1366"
-     inkscape:window-height="714"
+     inkscape:window-height="712"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     borderlayer="false">
+     inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
        id="grid3556"
        empspacing="5"
        visible="true"
        enabled="true"
-       snapvisiblegridlinesonly="true" />
+       snapvisiblegridlinesonly="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata3800">
@@ -57,13 +56,23 @@
     </rdf:RDF>
   </metadata>
   <path
+     sodipodi:nodetypes="ccc"
      inkscape:connector-curvature="0"
-     id="path2985"
-     d="M 1.1,1.1 8.9,8.9"
-     style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     inkscape:connector-curvature="0"
-     id="path2985-1"
-     d="M 8.9,1.1 1.1,8.9"
-     style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     id="rect3851-5-7-9"
+     d="m 2,0.5 7.5,0 0,7.5"
+     style="fill:none;fill-opacity:1;stroke:#404040;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     y="2.5"
+     x="0.5"
+     height="7"
+     width="7"
+     id="rect3851-5-7"
+     style="fill:none;stroke:#404040;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     style="fill:none;stroke:#404040;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect3851-7-1"
+     width="7"
+     height="6"
+     x="0.5"
+     y="3.5" />
 </svg>
