@@ -3,6 +3,7 @@ Name=Windows 8
 Comment=Windows 8 decoration clone
 
 X-Plasma-MainScript=main.qml
+X-Plasma-ServiceType=KWin/Decoration
 X-KDE-PluginInfo-Author=Demitrius Belai
 X-KDE-PluginInfo-Email=demitriusbelai@gmail.com
 X-KDE-PluginInfo-Name=kwin_win8
