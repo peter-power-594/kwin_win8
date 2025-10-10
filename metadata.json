@@ -1,0 +1,16 @@
+{
+    "KPackageStructure": "KWin/Decoration",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "demitriusbelai@gmail.com",
+                "Name": "Demitrius Belai"
+            }
+        ],
+        "Description": "Windows 8 decoration clone",
+        "Id": "kwin_win8",
+        "License": "GPL",
+        "Name": "Windows 8"
+    },
+    "X-KWin-Config-TranslationDomain": "kwin"
+}
